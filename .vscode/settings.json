@@ -1,0 +1,7 @@
+{
+    "python.pythonPath": "/home/jw/.applications/miniconda/envs/pyqtdev/bin/python",
+    "editor.fontFamily": "Ubuntu Mono",
+    "editor.fontSize": 18,
+    "todohighlight.isCaseSensitive": false,
+    "python.venvPath": "${python.venvFolders}",
+}
