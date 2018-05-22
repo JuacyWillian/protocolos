@@ -3,12 +3,12 @@
 block_cipher = None
 
 added_files = [
-    ('resources\\*', 'resources'),
-    ('design\\*', 'design'),
+    ('resources/*', 'resources'),
+    ('design/*', 'design'),
 ]
 
 a = Analysis(['main.py'],
-             pathex=['C:\\Users\\Juacy Willian\\workspaces\\python-projects\\protocolos'],
+             pathex=['C:/Users/Juacy Willian/workspaces/python-projects/protocolos'],
              binaries=[],
              datas=added_files,
              hiddenimports=[],
