@@ -1,0 +1,15 @@
+*.pyc
+*.pyo
+*.pyw
+
+**/__pycache__
+**/build
+**/dist
+**/.vscode
+
+*.db
+*.storage
+*.database
+*.sqlite
+*.sqlite3
+
