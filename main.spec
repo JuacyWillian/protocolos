@@ -2,11 +2,13 @@
 
 block_cipher = None
 
-added_files = [('design/*ui', 'design'),
-	       ('resources/*.png', 'resources'),]
+added_files = [
+    ('resources\\*', 'resources'),
+    ('design\\*', 'design'),
+]
 
 a = Analysis(['main.py'],
-             pathex=['/home/jw/workspaces/python-projects/python_gui_programming'],
+             pathex=['C:\\Users\\Juacy Willian\\workspaces\\python-projects\\protocolos'],
              binaries=[],
              datas=added_files,
              hiddenimports=[],
@@ -28,4 +30,4 @@ exe = EXE(pyz,
           strip=False,
           upx=True,
           runtime_tmpdir=None,
-          console=True )
+          console=False )
