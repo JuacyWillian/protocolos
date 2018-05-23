@@ -1,6 +1,6 @@
 {
     "todohighlight.isCaseSensitive": false,
     "python.venvPath": "${python.venvFolders}",
-    "python.pythonPath": "C:\\Users\\Juacy Willian\\AppData\\Local\\conda\\conda\\envs\\protocolos\\python.exe",
+    "python.pythonPath": "/home/jw/.applications/miniconda/envs/pyqtdev/bin/python",
     "editor.wordWrapColumn": 120
 }

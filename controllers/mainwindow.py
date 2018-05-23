@@ -10,11 +10,19 @@ from PyQt5.QtWidgets import (QApplication, QDialog, QListWidgetItem,
                              QMainWindow, QTableWidget)
 from PyQt5.uic import loadUi
 
+from controllers.backupdialog import BackupDialog
 from controllers.protocoldialog import ProtocolDialog
 from controllers.confirmdialog import ConfirmDialog
 from controllers.aboutdialog import AboutDialog
 from models import Protocolo
+from services import *
 from settings import DESIGN_PATH
+
+SERVICES = {
+    "dropbox": Dropbox,
+    "gdrive": GoogleDrive,
+    "onedrive": OneDrive,
+}
 
 
 class MyQListWidgetItem(QListWidgetItem):
@@ -118,15 +126,29 @@ class MainWindow(QMainWindow):
 
     @Slot()
     def on_actionRealizarBackup_triggered(self, ):
-        print("salvando backup")
+        backupDialog = BackupDialog(self, title="Realizar Backup")
+        if backupDialog.exec_() == QDialog.Accepted:
+            username = backupDialog.email
+            password = backupDialog.password
+            __service = SERVICES[backupDialog.service.value]
+
+            service = __service(username, password)
+            service.doBackup()
 
     @Slot()
     def on_actionRestaurarBackup_triggered(self, ):
-        print("restaurando backup")
+        backupDialog = BackupDialog(self, title="Restaurar Backup")
+        if backupDialog.exec_() == QDialog.Accepted:
+            username = backupDialog.email
+            password = backupDialog.password
+            __service = SERVICES[backupDialog.service.value]
+
+            service = __service(username, password)
+            service.doRestaurBackup()
 
     @Slot()
     def on_actionSobre_triggered(self, ):
-        aboutDialog = AboutDialog()
+        aboutDialog = AboutDialog(self)
         aboutDialog.exec_()
 
     @Slot()
