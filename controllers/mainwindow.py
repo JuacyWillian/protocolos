@@ -117,6 +117,14 @@ class MainWindow(QMainWindow):
         self.load_items()
 
     @Slot()
+    def on_actionRealizarBackup_triggered(self, ):
+        print("salvando backup")
+
+    @Slot()
+    def on_actionRestaurarBackup_triggered(self, ):
+        print("restaurando backup")
+
+    @Slot()
     def on_actionSobre_triggered(self, ):
         aboutDialog = AboutDialog()
         aboutDialog.exec_()

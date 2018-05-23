@@ -44,7 +44,7 @@
             <x>0</x>
             <y>0</y>
             <width>560</width>
-            <height>398</height>
+            <height>401</height>
            </rect>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -315,17 +315,25 @@
      <x>0</x>
      <y>0</y>
      <width>854</width>
-     <height>22</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuArquivo">
     <property name="title">
      <string>Menu</string>
     </property>
+    <widget class="QMenu" name="menubackup">
+     <property name="title">
+      <string>Backup</string>
+     </property>
+     <addaction name="actionRealizarBackup"/>
+     <addaction name="actionRestaurarBackup"/>
+    </widget>
     <addaction name="actionNovo"/>
     <addaction name="separator"/>
-    <addaction name="actionSobre"/>
+    <addaction name="menubackup"/>
     <addaction name="separator"/>
+    <addaction name="actionSobre"/>
     <addaction name="actionFechar"/>
    </widget>
    <addaction name="menuArquivo"/>
@@ -344,6 +352,16 @@
   <action name="actionFechar">
    <property name="text">
     <string>Fechar</string>
+   </property>
+  </action>
+  <action name="actionRealizarBackup">
+   <property name="text">
+    <string>Realizar Backup</string>
+   </property>
+  </action>
+  <action name="actionRestaurarBackup">
+   <property name="text">
+    <string>Restaurar Backup</string>
    </property>
   </action>
  </widget>
