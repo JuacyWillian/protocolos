@@ -1,6 +1,6 @@
-import dropbox
+from dropbox import dropbox
+from dropbox.exceptions import ApiError
 from dropbox.files import WriteMode
-from dropbox.exceptions import ApiError, AuthError
 
 
 class BaseBackup():
@@ -8,13 +8,13 @@ class BaseBackup():
         self.username = username
         self.password = password
 
-    def login(self,):
+    def login(self, ):
         raise NotImplementedError("function 'login' not implemented")
 
     def logout(self, ):
         raise NotImplementedError("Not Implemented Function")
 
-    def doBackup(self,):
+    def doBackup(self, ):
         raise NotImplementedError("function 'doBackup' not implemented")
 
     def doRestaurBackup(self, ):
@@ -22,9 +22,8 @@ class BaseBackup():
 
 
 class Dropbox(BaseBackup):
-
     localfile = ''
-    backuppath = '/'+localfile
+    backuppath = '/' + localfile
     token = '67cJunbJf4IAAAAAAAAmPBXvssPJ2RmexhOhd6RkBO5JXz3BcVDIOfdI51wqxA8V'
 
     def login(self, ):

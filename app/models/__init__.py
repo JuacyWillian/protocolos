@@ -1,20 +1,17 @@
-import datetime
+from datetime import datetime
 from os.path import isfile
-from sqlite3 import *
-from time import sleep
-
+from sqlite3 import connect
 
 DATABASE_NAME = "storage.db"
 
 
 def convertToDateTime(value):
-    new_value = value.replace(' ', ':').replace('-', ':').replace('T', ':')\
+    new_value = value.replace(' ', ':').replace('-', ':').replace('T', ':') \
         .split('.')[0]
-    return datetime.datetime(*[int(i) for i in new_value.split(':')])
+    return datetime(*[int(i) for i in new_value.split(':')])
 
 
 class Protocolo():
-
     __id = None
     number = None
     __start = None

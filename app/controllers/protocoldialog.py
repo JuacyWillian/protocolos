@@ -1,13 +1,11 @@
 from datetime import datetime
 from os.path import join
 
-from PyQt5.QtCore import pyqtSlot as Slot
-
-from PyQt5.QtCore import Qt, QDateTime
+from PyQt5.QtCore import pyqtSlot as Slot, Qt
 from PyQt5.QtWidgets import QDialog
 from PyQt5.uic import loadUi
 
-from settings import DESIGN_PATH
+from app.settings import DESIGN_PATH
 
 
 class ProtocolDialog(QDialog):

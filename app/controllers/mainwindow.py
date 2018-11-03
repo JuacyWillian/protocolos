@@ -1,22 +1,17 @@
-import sys
-from datetime import datetime
-from enum import Enum
 from os.path import join
 
-from PyQt5.QtCore import pyqtProperty as Property
-from PyQt5.QtCore import pyqtSignal as Signal
-from PyQt5.QtCore import pyqtSlot as Slot
-from PyQt5.QtWidgets import (QApplication, QDialog, QListWidgetItem,
-                             QMainWindow, QTableWidget)
+from PyQt5.QtCore import pyqtSignal as Signal, pyqtSlot as Slot
+from PyQt5.QtWidgets import (QDialog, QListWidgetItem,
+                             QMainWindow)
 from PyQt5.uic import loadUi
 
-from controllers.backupdialog import BackupDialog
-from controllers.protocoldialog import ProtocolDialog
-from controllers.confirmdialog import ConfirmDialog
-from controllers.aboutdialog import AboutDialog
-from models import Protocolo
-from services import *
-from settings import DESIGN_PATH
+from app.controllers.aboutdialog import AboutDialog
+from app.controllers.backupdialog import BackupDialog
+from app.controllers.confirmdialog import ConfirmDialog
+from app.controllers.protocoldialog import ProtocolDialog
+from app.models import Protocolo
+from app.services import Dropbox, GoogleDrive, OneDrive
+from app.settings import DESIGN_PATH
 
 SERVICES = {
     "dropbox": Dropbox,
@@ -26,8 +21,8 @@ SERVICES = {
 
 
 class MyQListWidgetItem(QListWidgetItem):
-    def __init__(self, protocolo, *args, **kwargs):
-        QListWidgetItem.__init__(self, *args, **kwargs)
+    def __init__(self, protocolo, ):
+        QListWidgetItem.__init__(self, )
         self.protocolo = protocolo
         self.setText(self.protocolo.start.strftime("%c"))
 
@@ -38,7 +33,8 @@ class MainWindow(QMainWindow):
 
     def __init__(self, parent=None):
         QMainWindow.__init__(self, parent)
-        self.ui = loadUi(join(DESIGN_PATH, 'main_window.ui'), self)
+        path = join(DESIGN_PATH, 'main_window.ui')
+        self.ui = loadUi(path, self)
         self.load_items()
         self.changeProtocolo.connect(self.protocoloChanged)
 
@@ -75,7 +71,7 @@ class MainWindow(QMainWindow):
         for p in Protocolo.getAll():
             self.ui.listProtocolo.addItem(MyQListWidgetItem(p))
 
-    def on_listProtocolo_itemClicked(self, item: QListWidgetItem):
+    def on_listProtocolo_itemClicked(self, item: MyQListWidgetItem):
         self.protocolo = Protocolo.getByNumber(item.protocolo.number)
 
     @Slot(bool)
